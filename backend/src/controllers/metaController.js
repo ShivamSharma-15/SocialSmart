@@ -6,41 +6,39 @@ const {
   isSubbed,
   getAllFbPages,
   subscribeToAllPages,
-  leadAdded,
-  sendWhatsappUpdate,
 } = require("../services/facebookLeadService");
-const metaWebhookHandshake = async (req, res) => {
-  const key = process.env.META_VERIFY_TOKEN;
-  const mode = req.query["hub.mode"];
-  const token = req.query["hub.verify_token"];
-  const challenge = req.query["hub.challenge"];
-  if (mode === "subscribe" && token === key) {
-    res.status(200).send(challenge);
-  } else {
-    res.sendStatus(403);
-  }
-};
-const metaWebhookPing = async (req, res) => {
-  const body = req.body;
-  if (body.object === "page") {
-    for (const entry of body.entry) {
-      const lead = entry.changes?.[0]?.value;
+// const metaWebhookHandshake = async (req, res) => {
+//   const key = process.env.META_VERIFY_TOKEN;
+//   const mode = req.query["hub.mode"];
+//   const token = req.query["hub.verify_token"];
+//   const challenge = req.query["hub.challenge"];
+//   if (mode === "subscribe" && token === key) {
+//     res.status(200).send(challenge);
+//   } else {
+//     res.sendStatus(403);
+//   }
+// };
+// const metaWebhookPing = async (req, res) => {
+//   const body = req.body;
+//   if (body.object === "page") {
+//     for (const entry of body.entry) {
+//       const lead = entry.changes?.[0]?.value;
 
-      try {
-        const leadAdd = await leadAdded(lead);
-        if (leadAdd) {
-          console.log("Lead added successfully");
-          const sendWaMessage = await sendWhatsappUpdate(lead, leadAdd);
-        }
-      } catch (e) {
-        console.error("Error processing lead:", e.message);
-      }
-    }
-    res.sendStatus(200);
-  } else {
-    res.sendStatus(404);
-  }
-};
+//       try {
+//         const leadAdd = await leadAdded(lead);
+//         if (leadAdd) {
+//           console.log("Lead added successfully");
+//           const sendWaMessage = await sendWhatsappUpdate(lead, leadAdd);
+//         }
+//       } catch (e) {
+//         console.error("Error processing lead:", e.message);
+//       }
+//     }
+//     res.sendStatus(200);
+//   } else {
+//     res.sendStatus(404);
+//   }
+// };
 
 const loginSuccess = async function (req, res) {
   if (!req.user || !req.user.accessToken) {
@@ -87,8 +85,6 @@ const loginFailure = function (req, res) {
 };
 
 module.exports = {
-  metaWebhookHandshake,
-  metaWebhookPing,
   loginSuccess,
   loginFailure,
   refreshPageList,
