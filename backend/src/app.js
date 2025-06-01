@@ -35,7 +35,7 @@ const normalRoutes = require("./routes/normalRoutes.js");
 // const redirectRoute = require("./routes/redirectRoute.js");
 // const externalLeadRoute = require("./routes/externalLeadRoute.js");
 app.use("/meta/social-smart", metaWebhookRoute);
-app.use("/", normalRoutes);
+app.use("/apps/social-smart", normalRoutes);
 // app.use("/apps/leadsmart/leads-view", leadViewRoute);
 // app.use("/apps/leadsmart/onboarding", onboardingRoutes);
 // app.use("/app/leadsmart/redirect", redirectRoute);
