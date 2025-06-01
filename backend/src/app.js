@@ -30,7 +30,7 @@ app.use(sessionMiddleware);
 
 const metaWebhookRoute = require("./routes/metaRoute.js");
 // const leadViewRoute = require("./routes/leadViewRoute.js");
-// const normalRoutes = require("./routes/normalRoutes.js");
+const normalRoutes = require("./routes/normalRoutes.js");
 // const onboardingRoutes = require("./routes/onboardingRoutes.js");
 // const redirectRoute = require("./routes/redirectRoute.js");
 // const externalLeadRoute = require("./routes/externalLeadRoute.js");

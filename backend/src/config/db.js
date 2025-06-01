@@ -9,11 +9,5 @@ const pool = mysql.createPool({
   password: dbConfig.password,
   database: dbConfig.database,
 });
-const poolWeb = mysql.createPool({
-  host: dbConfigWeb.website_handler,
-  user: dbConfigWeb.website_account,
-  password: dbConfigWeb.password,
-  database: dbConfig.database,
-});
 
 module.exports = pool;
