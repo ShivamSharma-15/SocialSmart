@@ -10,8 +10,8 @@ router.get("/oauth", passport.authenticate("facebook"));
 router.get(
   "/oauth/callback",
   passport.authenticate("facebook", {
-    failureRedirect: "/meta/instant-form/oauth/failure",
-    successRedirect: "/meta/instant-form/oauth/success",
+    failureRedirect: "/meta/social-smart/oauth/failure",
+    successRedirect: "/meta/social-smart/oauth/success",
   })
 );
 
