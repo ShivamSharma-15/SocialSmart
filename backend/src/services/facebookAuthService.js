@@ -15,6 +15,7 @@ function getFacebookStrategy(passport, callbackURL) {
           "pages_show_list",
           "pages_read_engagement",
           "leads_retrieval",
+          "instagram_basic",
         ],
       },
       async function (accessToken, refreshToken, profile, done) {

@@ -45,7 +45,7 @@ async function getAllFbPages(userAccessToken) {
     return pages;
   } else return null;
 }
-async function subscribeToAllPages(pages) {
+async function getIgId(pages) {
   const subscriptionResults = await Promise.all(
     pages.map(async (page) => {
       const accessToken = await getPageAccessToken(page.id);
@@ -55,8 +55,8 @@ async function subscribeToAllPages(pages) {
           null,
           {
             params: {
+              fields: "instagram_business_account",
               access_token: accessToken.page_access_token,
-              subscribed_fields: "leadgen",
             },
           }
         );
@@ -431,5 +431,5 @@ module.exports = {
   getFbPages,
   isSubbed,
   getAllFbPages,
-  subscribeToAllPages,
+  getIgId,
 };

@@ -5,7 +5,7 @@ const {
   getFbPages,
   isSubbed,
   getAllFbPages,
-  subscribeToAllPages,
+  getIgId,
 } = require("../services/facebookLeadService");
 // const metaWebhookHandshake = async (req, res) => {
 //   const key = process.env.META_VERIFY_TOKEN;
@@ -50,12 +50,7 @@ const loginSuccess = async function (req, res) {
   const saveUser = await getFbUser(userAccessToken, userName, userId);
   const pages = await getAllFbPages(userAccessToken);
   const savePage = await getFbPages(pages, saveUser);
-  if (pages && savePage) {
-    const successfulSubs = await subscribeToAllPages(pages);
-    if (successfulSubs) {
-      const saveSubscription = await isSubbed(successfulSubs);
-    }
-  }
+  const getIgId = await getIgId(pages);
   if (!pages || pages.length === 0) {
     return res
       .status(200)
