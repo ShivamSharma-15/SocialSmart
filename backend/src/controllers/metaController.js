@@ -45,6 +45,7 @@ const loginSuccess = async function (req, res) {
   }
   const userAccessToken = req.user.accessToken;
   const userName = req.user.displayName;
+  console.log(userName);
   const userId = req.user.id;
   const saveUser = await getFbUser(userAccessToken, userName, userId);
   const pages = await getAllFbPages(userAccessToken);
