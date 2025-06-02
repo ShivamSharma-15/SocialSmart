@@ -43,6 +43,7 @@ const loginSuccess = async function (req, res) {
   if (!req.user || !req.user.accessToken) {
     return res.status(401).send("User is not authenticated.");
   }
+  console.log(req);
   const userAccessToken = req.user.accessToken;
   const userName = req.user.displayName;
   console.log(userName);
