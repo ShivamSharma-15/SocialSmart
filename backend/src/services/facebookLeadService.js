@@ -50,16 +50,12 @@ async function getIgId(pages) {
     pages.map(async (page) => {
       const accessToken = await getPageAccessToken(page.id);
       try {
-        await axios.post(
-          `https://graph.facebook.com/v22.0/${page.id}/subscribed_apps`,
-          null,
-          {
-            params: {
-              fields: "instagram_business_account",
-              access_token: accessToken.page_access_token,
-            },
-          }
-        );
+        await axios.post(`https://graph.facebook.com/v22.0/${page.id}`, null, {
+          params: {
+            fields: "instagram_business_account",
+            access_token: accessToken.page_access_token,
+          },
+        });
         return { page: page.name, pageId: page.id, success: true };
       } catch (err) {
         return {
