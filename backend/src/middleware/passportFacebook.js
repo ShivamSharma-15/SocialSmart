@@ -3,7 +3,7 @@ require("dotenv").config();
 const { getFacebookStrategy } = require("../services/facebookAuthService");
 
 // Apply only to this route
-getFacebookStrategy(passport, "/meta/instant-form/oauth/callback");
+getFacebookStrategy(passport, "/meta/social-smart/oauth/callback");
 
 passport.serializeUser((user, done) => {
   done(null, user);
