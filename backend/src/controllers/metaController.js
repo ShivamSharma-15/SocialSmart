@@ -3,7 +3,6 @@ const axios = require("axios");
 const {
   getFbUser,
   getFbPages,
-  isSubbed,
   getAllFbPages,
   getIgId,
 } = require("../services/facebookLeadService");
@@ -49,6 +48,7 @@ const loginSuccess = async function (req, res) {
   const userId = req.user.id;
   const saveUser = await getFbUser(userAccessToken, userName, userId);
   const pages = await getAllFbPages(userAccessToken);
+  console.log(pages);
   const savePage = await getFbPages(pages, saveUser);
   const getIgId = await getIgId(pages);
   if (!pages || pages.length === 0) {
